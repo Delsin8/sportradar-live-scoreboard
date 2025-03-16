@@ -1,12 +1,24 @@
 {
   "name": "ym-sportradar-live-scoreboard",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "sportradar test task",
+  "author": "Yurii Mankivskyi",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "jest": "^29.4.3",
+    "ts-jest": "^29.1.0",
+    "@types/jest": "^29.2.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.0"
+  }
 }
