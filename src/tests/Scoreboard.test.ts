@@ -1,12 +1,11 @@
 import Scoreboard from '../models/Scoreboard'
-import ByCombinedScore from '../SortingAlgorithms/byCombinedScore'
 import { teams } from '../data'
 
 describe('Scoreboard', () => {
   let scoreboard: Scoreboard
 
   beforeEach(() => {
-    scoreboard = new Scoreboard(new ByCombinedScore())
+    scoreboard = new Scoreboard()
   })
 
   test('should add match to the scoreboard', () => {

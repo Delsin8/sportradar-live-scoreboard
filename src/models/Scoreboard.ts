@@ -1,9 +1,12 @@
 import Match from './Match'
 import { SortingMethod, Team } from '../types'
+import ByCombinedScore from '../SortingAlgorithms/byCombinedScore'
 
 export default class Scoreboard {
   private matches: Match[] = []
-  constructor(private sortingMethod: SortingMethod<Match>) {}
+  constructor(
+    private sortingMethod: SortingMethod<Match> = new ByCombinedScore()
+  ) {}
 
   startMatch(
     homeTeam: Team,
