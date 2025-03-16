@@ -1,13 +1,6 @@
 import { Match } from '../models'
 import { teams } from '../data'
 
-jest.mock('nanoid', () => {
-  let counter = 1
-  return {
-    nanoid: jest.fn(() => `mocked_id_${counter++}`),
-  }
-})
-
 describe('Match', () => {
   test('should start with 0-0 score', () => {
     const match = new Match(teams[0], teams[1])

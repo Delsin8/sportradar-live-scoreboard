@@ -9,4 +9,7 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  moduleNameMapper: {
+    '^nanoid$': '<rootDir>/src/__mocks__/nanoid.ts',
+  },
 }
