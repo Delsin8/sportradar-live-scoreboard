@@ -1,6 +1,6 @@
 {
   "name": "ym-sportradar-live-scoreboard",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "sportradar test task",
   "author": "Yurii Mankivskyi",
   "main": "dist/index.js",

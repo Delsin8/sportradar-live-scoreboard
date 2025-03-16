@@ -1,6 +1,6 @@
 import Match from './Match'
 import { SortingMethod, Team } from '../types'
-import ByCombinedScore from '../SortingAlgorithms/byCombinedScore'
+import { ByCombinedScore } from '../SortingAlgorithms'
 
 export default class Scoreboard {
   private matches: Match[] = []
