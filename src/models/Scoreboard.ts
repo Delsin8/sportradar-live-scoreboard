@@ -14,15 +14,9 @@ export default class Scoreboard {
     startTime?: number,
     id?: string
   ): Match {
-    if (
-      this.matches.some(match => {
-        const condition1 = match.homeTeam.id === (homeTeam.id || awayTeam.id)
-        const condition2 = match.awayTeam.id === (homeTeam.id || awayTeam.id)
-        return condition1 || condition2
-      })
-    )
-      throw new Error('Match with one of these teams already exists')
-    const newMatch = new Match(homeTeam, awayTeam, startTime)
+    this.validateMatchStart(homeTeam, awayTeam)
+
+    const newMatch = new Match(homeTeam, awayTeam, startTime, id)
     this.matches.push(newMatch)
     return newMatch
   }
@@ -43,6 +37,27 @@ export default class Scoreboard {
 
   getMatches() {
     return this.matches
+  }
+
+  private validateMatchStart(homeTeam: Team, awayTeam: Team) {
+    if (this.isTeamAlreadyInMatch(homeTeam, awayTeam)) {
+      throw new Error('Match with one of these teams already exists')
+    }
+    if (this.isSameTeamsInMatch(homeTeam, awayTeam)) {
+      throw new Error('Home and away teams should be unique')
+    }
+  }
+
+  private isTeamAlreadyInMatch(homeTeam: Team, awayTeam: Team) {
+    return this.matches.some(
+      match =>
+        [match.homeTeam.id, match.awayTeam.id].includes(homeTeam.id) ||
+        [match.homeTeam.id, match.awayTeam.id].includes(awayTeam.id)
+    )
+  }
+
+  private isSameTeamsInMatch(homeTeam: Team, awayTeam: Team) {
+    return homeTeam.id === awayTeam.id
   }
 
   private findMatch(matchId: string) {

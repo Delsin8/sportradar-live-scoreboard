@@ -20,6 +20,12 @@ describe('Scoreboard', () => {
     )
   })
 
+  test('should throw error if match starts with 2 same teams', () => {
+    expect(() => scoreboard.startMatch(teams[0], teams[0])).toThrow(
+      'Home and away teams should be unique'
+    )
+  })
+
   test('should uptate the score of an ongoing match', () => {
     const match = scoreboard.startMatch(teams[0], teams[1])
     scoreboard.updateScore(match.id, 7, 1)
